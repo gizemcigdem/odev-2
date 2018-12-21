@@ -1,1 +1,4 @@
 # odev-2
+
+OZL16000228 Gizem ÇİĞDEM
+05160000126 Esma MERT
