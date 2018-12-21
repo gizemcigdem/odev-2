@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm() {
+    var x = document.querySelector("#name").value;
+  if (x == "") {
+    document.getElementById("error1").innerHTML="İsim giriniz... ";
+
+  }
+  else{
+    document.getElementById("error1").innerHTML="";
+  }
+  var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/; 
+  var address = document.querySelector("#email").value; 
+  if(reg.test(address) == false) {
+    document.getElementById("error2").innerHTML="Geçersiz email adresi!...";
+
+  } 
+  else{
+    document.getElementById("error2").innerHTML="";
+  }
+  var rakam= /[0-9]/;
+  var say = document.querySelector("#sayisal").value; 
+  if(rakam.test(say) == false) {
+    document.getElementById("error3").innerHTML="Geçersiz sayısal değer!...";
+  }
+  else{
+    document.getElementById("error3").innerHTML="";
+  }
+  var oniki= /[0-9]/;
+  var sayi = document.querySelector("#basamakli").value; 
+  if(oniki.test(sayi) == false || sayi.length!=12) {
+    document.getElementById("error4").innerHTML="12 basamaklı bir sayı giriniz!...";
+  }
+  else{
+    document.getElementById("error4").innerHTML="";
+  }
+  var harf= /([A-Za-z])/;
+  var harf2 = document.querySelector("#alfa").value; 
+  if(harf.test(harf2) == false) {
+    document.getElementById("error5").innerHTML="Geçersiz harf!...";
+ 
+  }
+  else{
+    document.getElementById("error5").innerHTML="";
+  }
+  var kelime = /([A-Za-z])/;
+  var otuz = document.querySelector("#max30").value; 
+  if(kelime.test(otuz) == false || otuz.length > 30) {
+    document.getElementById("error6").innerHTML="En fazla 30 karakterden oluşan bir metin giriniz!...";
+  } 
+  else{
+    document.getElementById("error6").innerHTML="";
+  }
+  var string = /^([A-Za-z])+[" "]+([A-Za-z])+[" "]+([A-Za-z])/; 
+  var a = document.querySelector("#uckelime").value; 
+  if(string.test(a) == false) {
+    document.getElementById("error7").innerHTML="String üç kelimeden oluşmalı!...";
+  } 
+  else{
+    document.getElementById("error7").innerHTML="";
+  }
+  var sifre= document.querySelector("#password").value;
+  if(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*.,:;?-])[\w!@#$%^&*.,:;?-]{8,}$/.test(sifre) ==false ) {
+    document.getElementById("error8").innerHTML="Geçersiz şifre!...";
+    return false; 
+  }
+  else{
+    document.getElementById("error8").innerHTML="";
+  }
+}
+</script>
+</head>
+
+<body>
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Aşağıdaki hiçbir input boş olmamalı: <br>
+  
+
+  <table style="width:60%">
+    
+  <tr>
+    <td>Boş olmamalı: </td>
+    <td><input type="text" id="name"></td>
+      <td id="error1" style="color:red;width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>E-mail (Kurallara uygun email): </td>
+    <td><input type="text" id="email"></td>
+      <td id="error2" style="color:red;width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal: </td>
+    <td><input type="text" id="sayisal"></td>
+      <td id="error3" style="color:red;width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal olan ve 12 basamak uzunluğundaki sayi: </td>
+    <td><input type="text" id="basamakli"></td>
+     <td id="error4" style="color:red;width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>Sadece harf (a..z veya A..Z): </td>
+    <td><input type="text" id="alfa"></td>
+      <td id="error5" style="color:red;width: 50%">
+  </td>
+  </tr>
+  <tr>
+    <td>Sadece harf ve en fazla 30 uzunlukta olan string: </td>
+    <td><input type="text" id="max30"></td>
+      <td id="error6" style="color:red;width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>3 kelimeden oluşan string: </td>
+    <td><input type="text" id="uckelime"></td>
+      <td id="error7" style="color:red;width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>En az 1 büyük harf, en az 1 küçük harf, en az bir rakam ve en az 1 noktalama işareti içeren ve en az 8 uzunluğunda olan metin: </td>
+    <td><input type="text" id="password"></td>
+      <td id="error8" style="color:red;width: 50%">
+    </td>
+  </tr>
+  
+</table>
+
+<br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
